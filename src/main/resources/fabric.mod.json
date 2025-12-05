@@ -1,11 +1,11 @@
 {
 	"schemaVersion": 1,
-	"id": "examplemod",
+	"id": "btardim",
 	"version": "${version}",
-	"name": "Example Mod",
-	"description": "This mod aims to help new BTA modders.",
+	"name": "BTARDIM",
+	"description": "A Vanilla+ TARDIS mod for BTA.",
 	"authors": [
-		"Turnip Labs"
+		"The_Midford"
 	],
 	"contact": {
 		"homepage": "",
@@ -16,20 +16,20 @@
 	"environment": "*",
 	"entrypoints": {
 		"main": [
-			"turniplabs.examplemod.ExampleMod"
+          "malicedev.btardim.Main"
 		],
 		"beforeGameStart": [
-			"turniplabs.examplemod.ExampleMod"
+          "malicedev.btardim.Main"
 		],
 		"afterGameStart": [
-			"turniplabs.examplemod.ExampleMod"
+          "malicedev.btardim.Main"
 		],
 		"recipesReady": [
-			"turniplabs.examplemod.ExampleMod"
+          "malicedev.btardim.Main"
 		]
 	},
 	"mixins": [
-		"examplemod.mixins.json"
+		"btardim.mixins.json"
 	],
 	"depends": {
 		"fabricloader": ">=${fabricloader}",

@@ -52,6 +52,7 @@ dependencies {
 	implementation(libs.halplibe)
 	implementation(libs.modMenu)
 	implementation(libs.legacyLwjgl)
+	implementation("useless:dragonfly:1.7.0-alpha.7")
 
 	implementation(libs.slf4jApi)
 	implementation(libs.guava)
