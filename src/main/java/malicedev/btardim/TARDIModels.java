@@ -16,7 +16,7 @@ public class TARDIModels implements ModelEntrypoint {
 	@Override
 	public void initBlockModels(BlockModelDispatcher blockModelDispatcher) {
 		ModelHelper.setBlockModel(BlockTardimRoof, ()->
-			new BlockModelDFJava<>(BlockTardimRoof, DragonFly.loadBlockModel("btardim:block/btardim_roof"))
+			new BlockModelDFJava<>(BlockTardimRoof, DragonFly.loadBlockModel("btardim/block:tardim_roof"))
 			);
 	}
 
