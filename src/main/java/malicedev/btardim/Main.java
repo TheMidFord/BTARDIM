@@ -1,8 +1,11 @@
 package malicedev.btardim;
 
 import net.fabricmc.api.ModInitializer;
+import net.minecraft.client.render.texture.stitcher.AtlasStitcher;
+import net.minecraft.client.render.texture.stitcher.TextureRegistry;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import turniplabs.halplibe.helper.TextureHelper;
 import turniplabs.halplibe.util.ConfigHandler;
 import turniplabs.halplibe.util.GameStartEntrypoint;
 import turniplabs.halplibe.util.RecipeEntrypoint;
@@ -30,6 +33,13 @@ public class Main implements ModInitializer, RecipeEntrypoint, GameStartEntrypoi
 		LOGGER.info("BTARDIM initialized.");
 		ModItems.init();
 		ModBlocks.init();
+		for (final AtlasStitcher stitcher : TextureRegistry.stitcherMap.values()) {
+			try {
+				TextureHelper.initializeAllFiles(MOD_ID, stitcher, Integer.MAX_VALUE);
+			} catch (Exception e) {
+				LOGGER.error("Failed to initialize texture files!", e);
+			}
+		}
 	}
 	@Override
 	public void onRecipesReady() {}

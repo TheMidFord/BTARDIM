@@ -26,6 +26,9 @@
 		],
 		"recipesReady": [
           "malicedev.btardim.Main"
+		],
+		"initModels": [
+			"malicedev.btardim.TARDIModels"
 		]
 	},
 	"mixins": [
