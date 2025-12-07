@@ -1,5 +1,6 @@
 package malicedev.btardim;
 
+import malicedev.btardim.models.RotatableStateInterpreter;
 import net.minecraft.client.render.EntityRenderDispatcher;
 import net.minecraft.client.render.TileEntityRenderDispatcher;
 import net.minecraft.client.render.block.color.BlockColorDispatcher;
@@ -10,7 +11,7 @@ import org.useless.dragonfly.models.block.BlockModelDFJava;
 import turniplabs.halplibe.helper.ModelHelper;
 import turniplabs.halplibe.util.ModelEntrypoint;
 
-import static malicedev.btardim.ModBlocks.BlockTardimRoof;
+import static malicedev.btardim.ModBlocks.*;
 
 public class TARDIModels implements ModelEntrypoint {
 	@Override
@@ -18,6 +19,16 @@ public class TARDIModels implements ModelEntrypoint {
 		ModelHelper.setBlockModel(BlockTardimRoof, ()->
 			new BlockModelDFJava<>(BlockTardimRoof, DragonFly.loadBlockModel("btardim:block/btardim_roof"))
 			);
+		ModelHelper.setBlockModel(BlockTardimWallBottom, ()->
+			new BlockModelDFJava<>(BlockTardimWallBottom, DragonFly.loadBlockModel("btardim:block/btardim_wall_bottom"))
+				.setStateInterpreter(new RotatableStateInterpreter())
+				.setStateData("btardim:btardim_wall_bottom")
+			);
+		ModelHelper.setBlockModel(BlockTardimWallTop, ()->
+			new BlockModelDFJava<>(BlockTardimWallTop, DragonFly.loadBlockModel("btardim:block/btardim_wall_top"))
+				.setStateInterpreter(new RotatableStateInterpreter())
+				.setStateData("btardim:btardim_wall_top")
+		);
 	}
 
 	@Override

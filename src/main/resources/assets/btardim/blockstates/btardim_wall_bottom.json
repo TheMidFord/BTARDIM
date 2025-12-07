@@ -1,0 +1,36 @@
+{
+  "multipart": [
+    {
+      "apply":{
+        "model": "btardim:block/btardim_wall_bottom"
+      },
+      "when": {
+        "side": "north"
+      }
+    },
+    {
+      "apply":{
+        "model": "btardim:block/btardim_wall_bottom_south"
+      },
+      "when": {
+        "side": "south"
+      }
+    },
+    {
+      "apply":{
+        "model": "btardim:block/btardim_wall_bottom_east"
+      },
+      "when": {
+        "side": "east"
+      }
+    },
+    {
+      "apply":{
+        "model": "btardim:block/btardim_wall_bottom_west"
+      },
+      "when": {
+        "side": "west"
+      }
+    }
+  ]
+}
