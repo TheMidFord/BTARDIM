@@ -2,4 +2,6 @@ tile.btardim.tardim_roof.name = BTARDIM Roof
 tile.btardim.tardim_roof.desc = The roof block of a BTARDIM.
 tile.btardim.tardim_wall_bottom.name = BTARDIM Wall
 tile.btardim.tardim_wall_bottom.desc = The wall block of a BTARDIM.
+tile.btardim.tardim_wall_top.name = BTARDIM Wall
+tile.btardim.tardim_wall_top.desc = The wall block of a BTARDIM.
 
