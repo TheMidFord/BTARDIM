@@ -2,7 +2,10 @@ package malicedev.btardim.block;
 
 import net.minecraft.core.block.Block;
 import net.minecraft.core.block.BlockLogic;
+import net.minecraft.core.block.entity.TileEntity;
 import net.minecraft.core.block.material.Material;
+import net.minecraft.core.enums.EnumDropCause;
+import net.minecraft.core.item.ItemStack;
 import net.minecraft.core.util.phys.AABB;
 import net.minecraft.core.world.World;
 import net.minecraft.core.world.WorldSource;
@@ -21,10 +24,19 @@ public class BlockLogicTardimRoof extends BlockLogic {
 		this.addIntersectingBoundingBox(aabb, AABB.getTemporaryBB(0.0F, 0.0F, 0.0F, 0.5F, 0.5F, 0.5F).move(x + 0.25, y + 0.5, z + 0.25), aabbList);
 	}
 
+
+	@Override
+	public ItemStack[] getBreakResult(World world, EnumDropCause dropCause, int meta, TileEntity tileEntity) {
+		return null;
+
+	}
+
+
 	@Override
 	public boolean renderAsNormalBlockOnCondition(WorldSource world, int x, int y, int z) {
 		return false;
 	}
+
 	@Override
 	public boolean isSolidRender() {
 		return false;

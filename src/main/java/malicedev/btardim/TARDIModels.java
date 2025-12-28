@@ -29,6 +29,12 @@ public class TARDIModels implements ModelEntrypoint {
 				.setStateInterpreter(new RotatableStateInterpreter())
 				.setStateData("btardim:btardim_wall_top")
 		);
+		ModelHelper.setBlockModel(BlockTardimFullTemp, ()->
+			new BlockModelDFJava<>(BlockTardimFullTemp, DragonFly.loadBlockModel("btardim:block/btardim_full"))
+		);
+		ModelHelper.setBlockModel(BlockTardimDoorBottom, ()->
+			new BlockModelDFJava<>(BlockTardimDoorBottom, DragonFly.loadBlockModel("btardim:block/btardim_door_closed"))
+		);
 	}
 
 	@Override

@@ -1,5 +1,6 @@
 package malicedev.btardim;
 
+import malicedev.btardim.block.BlockLogicTardimDoor;
 import malicedev.btardim.block.BlockLogicTardimRoof;
 import malicedev.btardim.block.BlockLogicTardimWall;
 import net.minecraft.client.render.block.model.BlockModel;
@@ -8,6 +9,8 @@ import net.minecraft.core.block.Block;
 import net.minecraft.core.block.BlockLogic;
 import net.minecraft.core.block.BlockLogicSlab;
 import net.minecraft.core.block.material.Material;
+import net.minecraft.core.block.tag.BlockTags;
+import net.minecraft.core.item.Items;
 import net.minecraft.core.sound.BlockSound;
 import net.minecraft.core.sound.BlockSounds;
 import turniplabs.halplibe.HalpLibe;
@@ -19,6 +22,9 @@ public class ModBlocks {
 	public static Block BlockTardimRoof;
 	public static Block BlockTardimWallBottom;
 	public static Block BlockTardimWallTop;
+	public static Block BlockTardimFullTemp;
+	public static Block BlockTardimDoorBottom;
+	public static Block BlockTardimDoorTop;
 
 	public static void init() {
 		BlockTardimRoof = new BlockBuilder(Main.MOD_ID)
@@ -42,5 +48,27 @@ public class ModBlocks {
 			.build("tardim_wall_top","tardim_wall_top",blockId++,
 				(block) -> new BlockLogicTardimWall(block, Material.wood));
 
+		BlockTardimFullTemp = new BlockBuilder(Main.MOD_ID)
+			.setUnbreakable()
+			.setResistance(99999999)
+			.setBlockSound(BlockSounds.WOOD)
+			.build("tardim_full","tardim_full",blockId++,
+				(block) -> new BlockLogic(block, Material.wood));
+
+		BlockTardimDoorTop = new BlockBuilder(Main.MOD_ID)
+			.setUnbreakable()
+			.setResistance(99999999)
+			.setBlockSound(BlockSounds.WOOD)
+			.build("tardim_door_top","tardim_door_top",blockId++,
+				(block) -> new BlockLogicTardimDoor(block, Material.wood, true));
+
+		BlockTardimDoorBottom = new BlockBuilder(Main.MOD_ID)
+			.setUnbreakable()
+			.setResistance(99999999)
+			.setBlockSound(BlockSounds.WOOD)
+			.setTags(BlockTags.NOT_IN_CREATIVE_MENU)
+			.build("tardim_door_bottom","tardim_door_bottom",blockId++,
+				(block) -> new BlockLogicTardimDoor(block, Material.wood, false));
 	}
+
 }

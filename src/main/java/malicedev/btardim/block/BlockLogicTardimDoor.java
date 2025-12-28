@@ -1,0 +1,165 @@
+package malicedev.btardim.block;
+
+import net.minecraft.core.block.Block;
+import net.minecraft.core.block.BlockLogicDoor;
+import net.minecraft.core.block.BlockLogicRotatable;
+import net.minecraft.core.block.Blocks;
+import net.minecraft.core.block.entity.TileEntity;
+import net.minecraft.core.block.material.Material;
+import net.minecraft.core.entity.player.Player;
+import net.minecraft.core.enums.EnumDropCause;
+import net.minecraft.core.item.Item;
+import net.minecraft.core.item.ItemStack;
+import net.minecraft.core.item.tag.ItemTags;
+import net.minecraft.core.util.helper.Side;
+import net.minecraft.core.util.phys.AABB;
+import net.minecraft.core.world.World;
+import net.minecraft.core.world.WorldSource;
+import org.jetbrains.annotations.Nullable;
+
+import java.util.ArrayList;
+
+public class BlockLogicTardimDoor extends BlockLogicRotatable {
+	public BlockLogicTardimDoor(Block<?> block, Material material, boolean isTop) {
+		super(block, material);
+		this.isTop = isTop;
+		float f = 0.5F;
+		if (isTop) {
+			this.setBlockBounds(0.5F - f, -1.0F, 0.5F - f, 0.5F + f, 1.0F, 0.5F + f);
+		} else {
+			this.setBlockBounds(0.5F - f, 0.0F, 0.5F - f, 0.5F + f, 2.0F, 0.5F + f);
+		}
+	}
+
+	public boolean isTop;
+
+	public AABB getBoundsForRotation(int rotation, boolean drawingSelection) {
+		float top = 1.0F;
+		float bottom = 0.0F;
+		if (this.isTop && drawingSelection) {
+			top = 1.0F;
+			bottom = -1.0F;
+		} else if (drawingSelection) {
+			top = 2.0F;
+			bottom = 0.0F;
+		}
+
+		float f = 0.0F;
+		switch (rotation) {
+			case 0:
+				return AABB.getTemporaryBB(0.0, bottom, 0.0, 1.0, top, f);
+			case 1:
+				return AABB.getTemporaryBB(1.0F - f, bottom, 0.0, 1.0, top, 1.0);
+			case 2:
+				return AABB.getTemporaryBB(0.0, bottom, 1.0F - f, 1.0, top, 1.0);
+			case 3:
+				return AABB.getTemporaryBB(0.0, bottom, 0.0, f, top, 1.0);
+			default:
+				return AABB.getTemporaryBB(0.0, bottom, 0.0, 1.0, top, 1.0);
+		}
+
+	}
+
+
+	public int getRotation(int i) {
+		return i & 3;
+	}
+
+	public static boolean isOpen(int i) {
+		return (i & 4) == 4;
+	}
+
+	@Override
+	public void getCollidingBoundingBoxes(World world, int x, int y, int z, AABB aabb, ArrayList<AABB> aabbList) {
+		int meta = world.getBlockMetadata(x, y, z);
+		int hRotation = meta & 7;
+
+		switch (hRotation) {
+			case 0:
+				this.addIntersectingBoundingBox(aabb, AABB.getTemporaryBB(0.0F, 0.0F, 0.0F, 0.1875F, 1.0F, 1.0F).move(x, y, z), aabbList);
+				break;
+			case 1:
+				this.addIntersectingBoundingBox(aabb, AABB.getTemporaryBB(0.0F, 0.0F, 0.0F, 0.1875F, 1.0F, 1.0F).move(x + (1 - 0.1875F), y, z), aabbList);
+				break;
+			case 2:
+				this.addIntersectingBoundingBox(aabb, AABB.getTemporaryBB(0.0F, 0.0F, 0.0F, 1.0F, 1.0F, 0.1875F).move(x, y, z), aabbList);
+				break;
+			case 3:
+				this.addIntersectingBoundingBox(aabb, AABB.getTemporaryBB(0.0F, 0.0F, 0.0F, 1.0F, 1.0F, 0.1875F).move(x, y, z + (1 - 0.1875F)), aabbList);
+				break;
+			case 4:
+				this.addIntersectingBoundingBox(aabb, AABB.getTemporaryBB(0.0F, 0.0F, 0.0F, 0.0F, 1.0F, 1.0F).move(x, y, z), aabbList);
+				this.addIntersectingBoundingBox(aabb, AABB.getTemporaryBB(0.0F, 0.0F, 0.0F, 0.0F, 1.0F, 1.0F).move(x, y, z), aabbList);
+				break;
+			case 5:
+				this.addIntersectingBoundingBox(aabb, AABB.getTemporaryBB(0.0F, 0.0F, 0.0F, 0.0F, 1.0F, 1.0F).move(x, y, z), aabbList);
+				this.addIntersectingBoundingBox(aabb, AABB.getTemporaryBB(0.0F, 0.0F, 0.0F, 0.0F, 1.0F, 1.0F).move(x, y, z), aabbList);
+				break;
+			case 6:
+				this.addIntersectingBoundingBox(aabb, AABB.getTemporaryBB(0.0F, 0.0F, 0.0F, 0.0F, 1.0F, 1.0F).move(x, y, z), aabbList);
+				this.addIntersectingBoundingBox(aabb, AABB.getTemporaryBB(0.0F, 0.0F, 0.0F, 0.0F, 1.0F, 1.0F).move(x, y, z), aabbList);
+				break;
+			case 7:
+			default:
+				this.addIntersectingBoundingBox(aabb, AABB.getTemporaryBB(0.0F, 0.0F, 0.0F, 0.0F, 1.0F, 1.0F).move(x, y, z), aabbList);
+				this.addIntersectingBoundingBox(aabb, AABB.getTemporaryBB(0.0F, 0.0F, 0.0F, 0.0F, 1.0F, 1.0F).move(x, y, z), aabbList);
+				break;
+		}
+	}
+
+	@Override
+	public AABB getBlockBoundsFromState(WorldSource world, int x, int y, int z) {
+		return this.getBoundsForRotation(this.getRotation(world.getBlockMetadata(x, y, z)), false);
+	}
+
+	@Override
+	public ItemStack[] getBreakResult(World world, EnumDropCause dropCause, int meta, TileEntity tileEntity) {
+		return null;
+
+	}
+
+	@Override
+	public boolean renderAsNormalBlockOnCondition(WorldSource world, int x, int y, int z) {
+		return false;
+	}
+
+	@Override
+	public boolean isSolidRender() {
+		return false;
+	}
+
+	@Override
+	public void onBlockLeftClicked(World world, int x, int y, int z, Player player, Side side, double xHit, double yHit) {
+		if (!Item.hasTag(player.getCurrentEquippedItem(), ItemTags.PREVENT_LEFT_CLICK_INTERACTIONS)) {
+			this.onBlockRightClicked(world, x, y, z, player, side, xHit, yHit);
+		}
+
+	}
+
+	@Override
+	public boolean onBlockRightClicked(World world, int x, int y, int z, @Nullable Player player, Side side, double xPlaced, double yPlaced) {
+		if (this.material != Material.metal && this.material != Material.steel) {
+			int l = world.getBlockMetadata(x, y, z);
+			if (this.isTop) {
+				Block<?> b;
+				if ((b = Blocks.blocksList[world.getBlockId(x, y - 1, z)]) != null && b.getLogic() instanceof BlockLogicTardimDoor) {
+					Blocks.blocksList[world.getBlockId(x, y - 1, z)].onBlockRightClicked(world, x, y - 1, z, player, side, xPlaced, yPlaced);
+				}
+
+				return true;
+			} else {
+				Block<?> b;
+				if ((b = Blocks.blocksList[world.getBlockId(x, y + 1, z)]) != null && b.getLogic() instanceof BlockLogicTardimDoor) {
+					world.setBlockMetadataWithNotify(x, y + 1, z, l ^ 4);
+				}
+
+				world.setBlockMetadataWithNotify(x, y, z, l ^ 4);
+				world.markBlocksDirty(x, y - 1, z, x, y, z);
+				world.playBlockEvent(player, 1003, x, y, z, 0);
+				return true;
+			}
+		} else {
+			return false;
+		}
+	}
+}
