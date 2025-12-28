@@ -59,6 +59,7 @@ public class ModBlocks {
 			.setUnbreakable()
 			.setResistance(99999999)
 			.setBlockSound(BlockSounds.WOOD)
+			.setTags(BlockTags.NOT_IN_CREATIVE_MENU)
 			.build("tardim_door_top","tardim_door_top",blockId++,
 				(block) -> new BlockLogicTardimDoor(block, Material.wood, true));
 

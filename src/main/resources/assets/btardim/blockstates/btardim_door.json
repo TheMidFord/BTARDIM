@@ -2,7 +2,7 @@
   "multipart": [
     {
       "apply":{
-        "model": "btardim:block/btardim_wall_top"
+        "model": "btardim:block/btardim_door_closed_north"
       },
       "when": {
         "side": "north"
@@ -10,7 +10,7 @@
     },
     {
       "apply":{
-        "model": "btardim:block/btardim_wall_top_south"
+        "model": "btardim:block/btardim_door_closed_south"
       },
       "when": {
         "side": "south"
@@ -18,7 +18,7 @@
     },
     {
       "apply":{
-        "model": "btardim:block/btardim_wall_top_east"
+        "model": "btardim:block/btardim_door_closed_east"
       },
       "when": {
         "side": "east"
@@ -26,10 +26,42 @@
     },
     {
       "apply":{
-        "model": "btardim:block/btardim_wall_top_west"
+        "model": "btardim:block/btardim_door_closed_west"
       },
       "when": {
         "side": "west"
+      }
+    },
+    {
+      "apply":{
+        "model": "btardim:block/btardim_door_open_north"
+      },
+      "when": {
+        "side": "north_open"
+      }
+    },
+    {
+      "apply":{
+        "model": "btardim:block/btardim_door_open_south"
+      },
+      "when": {
+        "side": "south_open"
+      }
+    },
+    {
+      "apply":{
+        "model": "btardim:block/btardim_door_open_east"
+      },
+      "when": {
+        "side": "east_open"
+      }
+    },
+    {
+      "apply":{
+        "model": "btardim:block/btardim_door_open_west"
+      },
+      "when": {
+        "side": "west_open"
       }
     }
   ]

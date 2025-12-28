@@ -1,5 +1,6 @@
 package malicedev.btardim;
 
+import malicedev.btardim.models.DoortatableStateInterpreter;
 import malicedev.btardim.models.RotatableStateInterpreter;
 import net.minecraft.client.render.EntityRenderDispatcher;
 import net.minecraft.client.render.TileEntityRenderDispatcher;
@@ -33,8 +34,11 @@ public class TARDIModels implements ModelEntrypoint {
 			new BlockModelDFJava<>(BlockTardimFullTemp, DragonFly.loadBlockModel("btardim:block/btardim_full"))
 		);
 		ModelHelper.setBlockModel(BlockTardimDoorBottom, ()->
-			new BlockModelDFJava<>(BlockTardimDoorBottom, DragonFly.loadBlockModel("btardim:block/btardim_door_closed"))
+			new BlockModelDFJava<>(BlockTardimDoorBottom, DragonFly.loadBlockModel("btardim:block/btardim_door_closed_north"))
+				.setStateInterpreter(new DoortatableStateInterpreter())
+				.setStateData("btardim:btardim_door")
 		);
+
 	}
 
 	@Override
