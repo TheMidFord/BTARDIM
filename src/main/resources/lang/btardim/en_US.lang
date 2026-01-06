@@ -4,4 +4,8 @@ tile.btardim.tardim_wall_bottom.name = BTARDIM Wall
 tile.btardim.tardim_wall_bottom.desc = The wall block of a BTARDIM.
 tile.btardim.tardim_wall_top.name = BTARDIM Wall
 tile.btardim.tardim_wall_top.desc = The wall block of a BTARDIM.
+item.btardim.debug_wall_placer.name = [DEBUG] BTARDIM wall placer.
+item.btardim.debug_wall_placer.desc = You shouldn't have this.
+item.btardim.debug_door_placer.name = [DEBUG] BTARDIM door placer.
+item.btardim.debug_door_placer.desc = You shouldn't have this.
 

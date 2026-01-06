@@ -75,10 +75,10 @@ public class BlockLogicTardimDoor extends BlockLogic {
 		  float THICC = (0.1875F)/2;
   		switch (hRotation) {
   			case 0: //East
-  				this.addIntersectingBoundingBox(aabb, AABB.getTemporaryBB(0.0F, 0.0F, 0.0F, 0.1875F, 1.0F, 1.0F), aabbList);
+  				this.addIntersectingBoundingBox(aabb, AABB.getTemporaryBB(0.0F, 0.0F, 0.0F, 0.1875F, 1.0F, 1.0F).move(x,y,z), aabbList);
   				break;
   			case 1: //South
-				this.addIntersectingBoundingBox(aabb, AABB.getTemporaryBB(0.0F, 0.0F, 0.0F, 1.0F, 1.0F, 0.1875F), aabbList);
+				this.addIntersectingBoundingBox(aabb, AABB.getTemporaryBB(0.0F, 0.0F, 0.0F, 1.0F, 1.0F, 0.1875F).move(x,y,z), aabbList);
 				break;
   			case 2: // West
   				this.addIntersectingBoundingBox(aabb, AABB.getTemporaryBB(0.0F, 0.0F, 0.0F, 0.1875F, 1.0F, 1.0F).move(x + (1 - 0.1875F), y, z), aabbList);

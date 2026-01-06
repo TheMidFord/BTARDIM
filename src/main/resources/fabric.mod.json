@@ -29,7 +29,9 @@
 		],
 		"initModels": [
 			"malicedev.btardim.TARDIModels"
-		]
+		],
+		"beforeClientStart": ["malicedev.btardim.ModClient"],
+		"afterClientStart": ["malicedev.btardim.ModClient"]
 	},
 	"mixins": [
 		"btardim.mixins.json"

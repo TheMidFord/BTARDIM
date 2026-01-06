@@ -33,13 +33,7 @@ public class Main implements ModInitializer, RecipeEntrypoint, GameStartEntrypoi
 		LOGGER.info("BTARDIM initialized.");
 		ModBlocks.init();
 		ModItems.init();
-		for (final AtlasStitcher stitcher : TextureRegistry.stitcherMap.values()) {
-			try {
-				TextureHelper.initializeAllFiles(MOD_ID, stitcher, Integer.MAX_VALUE);
-			} catch (Exception e) {
-				LOGGER.error("Failed to initialize texture files!", e);
-			}
-		}
+
 	}
 	@Override
 	public void onRecipesReady() {}

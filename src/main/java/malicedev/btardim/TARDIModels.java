@@ -7,6 +7,7 @@ import net.minecraft.client.render.TileEntityRenderDispatcher;
 import net.minecraft.client.render.block.color.BlockColorDispatcher;
 import net.minecraft.client.render.block.model.BlockModelDispatcher;
 import net.minecraft.client.render.item.model.ItemModelDispatcher;
+import net.minecraft.client.render.item.model.ItemModelStandard;
 import org.useless.DragonFly;
 import org.useless.dragonfly.models.block.BlockModelDFJava;
 import turniplabs.halplibe.helper.ModelHelper;
@@ -30,8 +31,8 @@ public class TARDIModels implements ModelEntrypoint {
 				.setStateInterpreter(new RotatableStateInterpreter())
 				.setStateData("btardim:btardim_wall_top")
 		);
-		ModelHelper.setBlockModel(BlockTardimFullTemp, ()->
-			new BlockModelDFJava<>(BlockTardimFullTemp, DragonFly.loadBlockModel("btardim:block/btardim_full"))
+		ModelHelper.setBlockModel(BlockTardimFullModel, ()->
+			new BlockModelDFJava<>(BlockTardimFullModel, DragonFly.loadBlockModel("btardim:block/btardim_full"))
 		);
 		ModelHelper.setBlockModel(BlockTardimDoorBottom, ()->
 			new BlockModelDFJava<>(BlockTardimDoorBottom, DragonFly.loadBlockModel("btardim:block/btardim_door_closed_north"))
@@ -43,7 +44,8 @@ public class TARDIModels implements ModelEntrypoint {
 
 	@Override
 	public void initItemModels(ItemModelDispatcher itemModelDispatcher) {
-
+		itemModelDispatcher.addDispatch(new ItemModelStandard(ModItems.DebugTardimDoorPlacer, null).setIcon("btardim:item/debug0"));
+		itemModelDispatcher.addDispatch(new ItemModelStandard(ModItems.DebugTardimWallPlacer, null).setIcon("btardim:item/debug1"));
 	}
 
 	@Override

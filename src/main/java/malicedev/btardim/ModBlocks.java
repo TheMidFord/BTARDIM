@@ -1,6 +1,7 @@
 package malicedev.btardim;
 
 import malicedev.btardim.block.BlockLogicTardimDoor;
+import malicedev.btardim.block.BlockLogicTardimFullModel;
 import malicedev.btardim.block.BlockLogicTardimRoof;
 import malicedev.btardim.block.BlockLogicTardimWall;
 import net.minecraft.client.render.block.model.BlockModel;
@@ -22,7 +23,7 @@ public class ModBlocks {
 	public static Block BlockTardimRoof;
 	public static Block BlockTardimWallBottom;
 	public static Block BlockTardimWallTop;
-	public static Block BlockTardimFullTemp;
+	public static Block BlockTardimFullModel;
 	public static Block BlockTardimDoorBottom;
 	public static Block BlockTardimDoorTop;
 
@@ -31,6 +32,7 @@ public class ModBlocks {
 			.setUnbreakable()
 			.setResistance(99999999)
 			.setBlockSound(BlockSounds.WOOD)
+			.setTags(BlockTags.NOT_IN_CREATIVE_MENU)
 			.build("tardim_roof","tardim_roof",blockId++,
 				(block) -> new BlockLogicTardimRoof(block, Material.wood));
 
@@ -38,6 +40,7 @@ public class ModBlocks {
 			.setUnbreakable()
 			.setResistance(99999999)
 			.setBlockSound(BlockSounds.WOOD)
+			.setTags(BlockTags.NOT_IN_CREATIVE_MENU)
 			.build("tardim_wall_bottom","tardim_wall_bottom",blockId++,
 				(block) -> new BlockLogicTardimWall(block, Material.wood));
 
@@ -45,15 +48,17 @@ public class ModBlocks {
 			.setUnbreakable()
 			.setResistance(99999999)
 			.setBlockSound(BlockSounds.WOOD)
+			.setTags(BlockTags.NOT_IN_CREATIVE_MENU)
 			.build("tardim_wall_top","tardim_wall_top",blockId++,
 				(block) -> new BlockLogicTardimWall(block, Material.wood));
 
-		BlockTardimFullTemp = new BlockBuilder(Main.MOD_ID)
+		BlockTardimFullModel = new BlockBuilder(Main.MOD_ID)
 			.setUnbreakable()
 			.setResistance(99999999)
 			.setBlockSound(BlockSounds.WOOD)
+			.setTags(BlockTags.NOT_IN_CREATIVE_MENU)
 			.build("tardim_full","tardim_full",blockId++,
-				(block) -> new BlockLogic(block, Material.wood));
+				(block) -> new BlockLogicTardimFullModel(block, Material.wood));
 
 		BlockTardimDoorTop = new BlockBuilder(Main.MOD_ID)
 			.setUnbreakable()
