@@ -17,14 +17,17 @@ public class Main implements ModInitializer, RecipeEntrypoint, GameStartEntrypoi
 	public static final Logger LOGGER = LoggerFactory.getLogger(MOD_ID);
 	public static int itemId;
 	public static int blockId;
+	public static int dimId;
 	static {
 		Properties prop = new Properties();
 		prop.setProperty("starting_block_id","8900");
 		prop.setProperty("starting_item_id","28000");
+		prop.setProperty("btardim_interior_dimension_id","40");
 		ConfigHandler config = new ConfigHandler(MOD_ID,prop);
 
 		blockId = config.getInt("starting_block_id");
 		itemId = config.getInt("starting_item_id");
+		dimId = config.getInt("btardim_interior_dimension_id");
 
 		config.updateConfig();
 	}
@@ -33,6 +36,7 @@ public class Main implements ModInitializer, RecipeEntrypoint, GameStartEntrypoi
 		LOGGER.info("BTARDIM initialized.");
 		ModBlocks.init();
 		ModItems.init();
+		ModDimensions.init();
 
 	}
 	@Override
