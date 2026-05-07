@@ -1,9 +1,6 @@
 package malicedev.btardim;
 
-import malicedev.btardim.block.BlockLogicTardimDoor;
-import malicedev.btardim.block.BlockLogicTardimFullModel;
-import malicedev.btardim.block.BlockLogicTardimRoof;
-import malicedev.btardim.block.BlockLogicTardimWall;
+import malicedev.btardim.block.*;
 import net.minecraft.client.render.block.model.BlockModel;
 import net.minecraft.client.render.block.model.BlockModelSlab;
 import net.minecraft.core.block.Block;
@@ -20,12 +17,13 @@ import static malicedev.btardim.Main.blockId;
 
 public class ModBlocks {
 	private ModBlocks() {}
-	public static Block BlockTardimRoof;
-	public static Block BlockTardimWallBottom;
-	public static Block BlockTardimWallTop;
-	public static Block BlockTardimFullModel;
-	public static Block BlockTardimDoorBottom;
-	public static Block BlockTardimDoorTop;
+	public static Block<?> BlockTardimRoof;
+	public static Block<?> BlockTardimWallBottom;
+	public static Block<?> BlockTardimWallTop;
+	public static Block<?> BlockTardimFullModel;
+	public static Block<?> BlockTardimDoorBottom;
+	public static Block<?> BlockTardimDoorTop;
+	public static Block<?> BlockTardimTeleSpace;
 
 	public static void init() {
 		BlockTardimRoof = new BlockBuilder(Main.MOD_ID)
@@ -74,7 +72,15 @@ public class ModBlocks {
 			.setBlockSound(BlockSounds.WOOD)
 			.setTags(BlockTags.NOT_IN_CREATIVE_MENU)
 			.build("tardim_door_bottom","tardim_door_bottom",blockId++,
-				(block) -> new BlockLogicTardimDoor(block, Material.wood, false));
+				(block) -> new BlockLogicTardimDoor(block, Material.glass, false));
+
+		BlockTardimTeleSpace = new BlockBuilder(Main.MOD_ID)
+			.setUnbreakable()
+			.setResistance(99999999)
+			.setBlockSound(BlockSounds.GLASS)
+			.setTags(BlockTags.NOT_IN_CREATIVE_MENU)
+			.build("tardim_telespace","tardim_telespace",blockId++,
+				(block) -> new BlockLogicTardimTeleSpace(block, Material.wood));
 	}
 
 }

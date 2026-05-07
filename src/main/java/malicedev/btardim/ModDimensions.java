@@ -8,9 +8,10 @@ import static malicedev.btardim.Main.dimId;
 public class ModDimensions {
 	private ModDimensions(){}
 
+	public static Dimension BTARDIMInterior;
 
 	public static void init() {
-		Dimension BTARDIMInterior = new Dimension("btardiminterior", null, 1, null, WorldTypes.EMPTY);
+		BTARDIMInterior = new Dimension("btardiminterior", null, 1, null, WorldTypes.EMPTY);
 		Dimension.registerDimension(dimId,BTARDIMInterior);
 	}
 }

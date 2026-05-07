@@ -6,6 +6,7 @@ import net.minecraft.client.render.EntityRenderDispatcher;
 import net.minecraft.client.render.TileEntityRenderDispatcher;
 import net.minecraft.client.render.block.color.BlockColorDispatcher;
 import net.minecraft.client.render.block.model.BlockModelDispatcher;
+import net.minecraft.client.render.block.model.BlockModelEmpty;
 import net.minecraft.client.render.item.model.ItemModelDispatcher;
 import net.minecraft.client.render.item.model.ItemModelStandard;
 import org.useless.DragonFly;
@@ -39,6 +40,8 @@ public class TARDIModels implements ModelEntrypoint {
 				.setStateInterpreter(new DoortatableStateInterpreter())
 				.setStateData("btardim:btardim_door")
 		);
+		blockModelDispatcher.addDispatch(BlockTardimTeleSpace,new BlockModelEmpty<>(BlockTardimTeleSpace)
+			);
 
 	}
 
